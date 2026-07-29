@@ -1,0 +1,10 @@
+{
+  "name": "QR Code Generator",
+  "description": "Professional, full-featured QR code generator and scanner supporting text, URL, Wi-Fi, vCard, SMS, email, crypto, bulk generation, frame styling, vector export, and scanning across all devices.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
