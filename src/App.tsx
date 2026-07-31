@@ -309,33 +309,44 @@ export default function App() {
 
         {/* Scanner View */}
         {activeNavTab === "scan" && (
-          <ScannerPanel
-            onSaveScannedResult={(text) => {
-              const item: HistoryItem = {
-                id: Date.now().toString(),
-                title: "Scanned QR Code",
-                type: "text",
-                content: text,
-                rawText: text,
-                createdAt: new Date().toLocaleDateString(),
-                config: INITIAL_DESIGN,
-              };
-              handleSaveToHistory(item);
-            }}
-          />
+          <div className="space-y-6">
+            <ScannerPanel
+              onSaveScannedResult={(text) => {
+                const item: HistoryItem = {
+                  id: Date.now().toString(),
+                  title: "Scanned QR Code",
+                  type: "text",
+                  content: text,
+                  rawText: text,
+                  createdAt: new Date().toLocaleDateString(),
+                  config: INITIAL_DESIGN,
+                };
+                handleSaveToHistory(item);
+              }}
+            />
+            {showAds && <AdBanner type="rectangle" />}
+          </div>
         )}
 
         {/* Bulk Generator View */}
-        {activeNavTab === "bulk" && <BulkGenerator config={designConfig} />}
+        {activeNavTab === "bulk" && (
+          <div className="space-y-6">
+            <BulkGenerator config={designConfig} />
+            {showAds && <AdBanner type="rectangle" />}
+          </div>
+        )}
 
         {/* Saved QR Codes History View */}
         {activeNavTab === "history" && (
-          <HistoryPanel
-            history={history}
-            onSelectHistoryItem={handleSelectHistoryItem}
-            onClearHistory={() => setHistory([])}
-            onDeleteHistoryItem={(id) => setHistory((prev) => prev.filter((i) => i.id !== id))}
-          />
+          <div className="space-y-6">
+            <HistoryPanel
+              history={history}
+              onSelectHistoryItem={handleSelectHistoryItem}
+              onClearHistory={() => setHistory([])}
+              onDeleteHistoryItem={(id) => setHistory((prev) => prev.filter((i) => i.id !== id))}
+            />
+            {showAds && <AdBanner type="rectangle" />}
+          </div>
         )}
       </main>
 
